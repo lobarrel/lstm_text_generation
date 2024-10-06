@@ -9,9 +9,9 @@ class NewsDataset(Dataset):
 
     def __getitem__(self, index):
         row = self.dataframe.iloc[index]
-        text = row["Title"] + " " + row["Description"]
         label = torch.tensor(row["Class Index"])
-        return text, label
+        text = row["Title"] + " " + row["Description"]
+        return label, text
 
     def __len__(self):
         return len(self.dataframe)
